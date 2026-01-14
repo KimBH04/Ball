@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8153193b0f13b141b3190e4cfd547d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
+  ownScore: 2147483647
   clip: {fileID: 8300000, guid: 2e1c0edfc97324f3cbdc4ed5f343753b, type: 3}
 --- !u!1 &9053131969652678569
 GameObject:
