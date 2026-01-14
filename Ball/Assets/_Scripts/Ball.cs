@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(AudioSource))]
 public class Ball : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -15,6 +16,8 @@ public class Ball : MonoBehaviour
 
     private bool isbrake;
 
+    private new AudioSource audio;
+
     private bool IsGround
     {
         get
@@ -26,6 +29,7 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        Coin.ballAudio = audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -50,7 +54,11 @@ public class Ball : MonoBehaviour
     {
         if (IsGround)
         {
+            var v = rigid.linearVelocity;
+            v.y = 0f;
+            rigid.linearVelocity = v;
             rigid.AddForce(new Vector3(0f, jumpForce), ForceMode.VelocityChange);
+            audio.Play();
         }
     }
 
